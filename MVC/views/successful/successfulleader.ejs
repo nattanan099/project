@@ -1,0 +1,42 @@
+<%- include ("../../views/_header") %>
+<div class="w3-main w3-content w3-padding" style="max-width:500px;margin-top:40px">
+    <div class="w3-row-padding w3-padding-16 w3-center" >
+                <div class="card">
+                    <div class="card-body"><br><br>
+                        <form action="" method="post" id="fromlist">
+                            <center>
+                                <h1 style="color:#5a5a5a;">กรอกข้อมูลการประเมินสำเร็จ</h1>
+                            </center><br>
+                            
+                            <a  href="ส่วนที่ 4.pdf" download>
+                                <img id = "pt1" src="pdf-icon-10.png"  alt="W3Schools" width="200" height="200" align="center"> <br><br>
+
+                               <font style="color:#5a5a5a;" > <h5 id = "f3" align="center" >กรุณาดาวน์โหลดส่วนที่ 4</h5> </font>
+                              </a>
+                              <div class="w3-rest">
+                            <%if(session.admin){%>
+                                <a href="/leaderlistadmin" class="btn btn-info" id="back" align="center"> เสร็จสิ้น </a>
+                                <% }else if (session.leader){%>
+                                <a href="/leaderlist/<%=session.department%>" class="btn btn-info" id="back" align="center"> เสร็จสิ้น </a>
+                                <% }else if (session.leaderinstallandma){%>
+                                <a href="/homeinstallandma" class="btn btn-info" id="back" align="center"> เสร็จสิ้น </a>
+                                <% }else if (session.hr) {%>
+                                <a href="/hrlist" class="btn btn-info" id="back" align="center"> เสร็จสิ้น </a>
+                                <% }else if (session.employee){%>
+                                <a href="/" class="btn btn-info" id="back" align="center"> เสร็จสิ้น </a>
+                                <%}else if (session.leaderinstall){%>
+                                <a href="/homeinstall" class="btn btn-info" id="back" align="center"> เสร็จสิ้น </a>
+                                <%}else if (session.leaderma){%>
+                                <a href="/homema" class="btn btn-info" id="back" align="center"> เสร็จสิ้น </a>
+                                <%}%>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+
+    <%- include ("../../views/_footer") %>

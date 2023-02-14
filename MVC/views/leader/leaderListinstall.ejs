@@ -1,0 +1,66 @@
+<%- include ("../../views/_headerleader2") %>
+<div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:5px">
+    <div class="w3-row-padding w3-padding-16 w3-center">                                  
+        <div class="w3-rest  w3-container">
+    <h1 id="h1id" align="center"> รายชื่อพนักงานในทีม Installation </h1>
+    <div style="overflow-x:auto;" align="center">
+                <table class="table table-bordered table-hover" id="myTable">
+                    <thead align="center">
+                        <tr class="table-active ">
+                            <th>ลำดับ</th>
+                            <th>ชื่อ</th>
+                            <th>ชื่อชื่อเล่น</th>
+                            <th>ฝ่าย</th>
+                            <th>แผนก</th>
+                            <th>ตัวเลือก</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody align="center">
+                        <% if(data){ %>
+                            <% for(var i=0 ; i < data.length;i++){ %>
+                                <tr>
+                                    <td>
+                                        <%= (i+1) %>
+                                    </td>
+                                    <td align="left">
+                                        <%= data[i].sex %> <%= data[i].firstname %>
+                                            <%= data[i].lastname %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].nickname %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].department%>
+                                    </td>
+                                    <td>
+                                        <%= data[i].subdepartment%> 
+                                    </td>
+                                    <td>
+                                        <a href="/leader/<%= data[i].emid %>" class="btn btn-success"> กรอกข้อมูล</a>
+                                     
+                                        <a href="/hrrecord/<%= data[i].emid %>" class="btn btn-danger"> ประวัติ </a>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                    <% } %>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <style>
+        th{
+            color: #5a5a5a;
+        }
+        tr{
+            color:#5a5a5a;
+        }
+    </style>
+
+
+    <%- include ("../../views/_footer") %>

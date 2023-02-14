@@ -1,0 +1,71 @@
+<%- include ("../../views/_header") %>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/ot/updatelast/<%= data.otid %>" method="post">
+                            <center>
+                                <h1>แก้ไขข้อมูล OT</h1>
+                            </center>
+                            <br>
+                            <br>
+                            <div class="form-group">
+                                <h5>เวลาพัก</h5>
+                                <% if(data.break_time == "02:00:00"){%>
+                                    <input type="radio" name="break_time" id = "checkmark1" style="width: 15px;"   class="w3-check" value="02:00:00" checked required> <font id = "f1">02:00 ชม.</font>
+                                    <input type="radio" name="break_time" id = "checkmark2" style="width: 15px;"  class="w3-check" value="01:00:00"  required> <font id = "f2">01:00 ชม.</font>
+                                <%}else if (data.break_time == "01:00:00" ){%>
+                                    <input type="radio" name="break_time" id = "checkmark1" style="width: 15px;"   class="w3-check" value="02:00:00"  required> <font id = "f1">02:00 ชม.</font>
+                                    <input type="radio" name="break_time" id = "checkmark2" style="width: 15px;"  class="w3-check" value="01:00:00" checked required> <font id = "f2">01:00 ชม.</font>
+                                <%}%>
+                            </div>
+                            
+                            <div class="form-group">
+                                <h5> วันที่ OT: <br>
+                                    <input type="text"  name="dateot"  class="form-control" value="<%=data.otdo%>">
+                                </h5>
+                            </div>
+
+                            <div class="form-group">
+                                <h5>จากเวลา (เริ่มทำ OT):<font color="red">*</font>
+                                    <input type="text" name="datestart" class="form-control" value="<%=data.otds%>">
+                                    </input>
+                                </h5>
+                            </div>
+
+                            <div class="form-group">
+                                <h5>ถึงเวลา (สิ้นสุด OT):<font color="red">*</font>
+                                    <input type="text" name="dateend" class="form-control" value="<%=data.otde%>">
+                                    </input>
+                                </h5>
+                            </div>
+
+                            <div class="form-group">
+                                <h5>รายละเอียดของงานที่ทำนอกเวลา:<font color="red">*</font>
+                                    <input type="text" name="detail" class="form-control" value="<%=data.detail%>">
+                                    </input>
+                                </h5>
+                            </div>
+
+                            <br>
+                            <%if(session.admin){%>
+                                <a href="/otlistlastadmin" class="btn btn-info w3-left" align="left"> กลับ </a>
+                                <%}else{%>
+                            <a href="/otlistlast/<%=data.emid%>" class="btn btn-info w3-left" align="left"> กลับ </a>
+                            <%}%>
+                            <button type="submit" class="btn btn-success w3-right" id="yes"> ยืนยัน </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+      div{
+        color: #5a5a5a;
+      }
+    </style>
+
+    <%- include ("../../views/_footer") %>

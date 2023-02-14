@@ -1,0 +1,61 @@
+<%if(session.admin){%>
+    <%- include ("../../views/_headeradmin") %>
+    <%}else{%>
+        <%- include ("../../views/_headerleader") %>
+    <%}%>
+    <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:5px">
+        <div class="w3-row-padding w3-padding-16 w3-center">                                  
+            <div class="w3-rest  w3-container">
+    <h1 align="center"> รายการ OT ที่สำเร็จแล้ว </h1>
+    <div style="overflow-x:auto;" align="center">                             
+                    <table class="table table-bordered table-hover">
+                        <thead align="center">
+                            <tr class="table-active ">
+                                <th>ลำดับ</th>
+                                <th>ชื่อ-นามสกุล</th>
+                                <th>ตำแหน่ง</th>
+                                <th>แผนก</th>
+                                <th>ตัวเลือก</th>
+                            </tr>
+                        </thead>
+                        <tbody align="center">
+                            <% if(data){ %>
+                                <% for(var i=0 ; i < data.length;i++){ %>                                  
+                                    <tr>
+                                        <td>
+                                            <%= (i+1) %>
+                                        </td>
+                                        <td align="left">
+                                            <%= data[i].sex %>
+                                                <%= data[i].firstname %>
+                                                    <%= data[i].lastname %>
+                                        </td>
+                                        <td>
+                                            <%=data[i].position%>
+                                        </td>
+                                        <td>
+                                            <%=data[i].subdepartment%>
+                                        </td>
+                                        <td>
+                                            <a href="/ot/History_yesleaderhistory/<%=data[i].emid%>" class="btn btn-primary">ประวัติ</a>
+                                        </td>
+                                    </tr>                               
+                                        <% } %>
+                                        <% } %>
+                        </tbody>
+                    </table>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <style>
+        th{
+            color: #5a5a5a;
+        }
+        tr{
+            color: #5a5a5a;
+        }
+    </style>
+
+    <%- include ("../../views/_footer") %>

@@ -1,0 +1,58 @@
+<%- include ("../../views/_headeradmin") %>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/register/del/<%= data.emid %>" method="post">
+                            <center>
+                                <h1 style="color:#5a5a5a">ยืนยันการลบรายชื่อพนักงาน</h1>
+                            </center>
+                            <br>
+                            <table class = "table  table-bordered table-hover">
+                              <tbody>
+                                <tr >
+                                  <td> <h5 id = "name" >   <font id="f2">  ชื่อ  :</font>   <font id = "f1"><%= data.sex%> <%= data.firstname%>   <%= data.lastname %> </font> </h5> </td>
+                                </tr>
+                                <tr>
+                                  <td> <h5 id = "name" > <font id="f2"> ชื่อเล่น : </font>  <font id = "f1"><%= data.nickname %> </font></h5> </td>
+                                </tr>
+                                <tr>
+                                  <td> <h5 id = "name" > <font id="f2"> ฝ่าย : </font> <font id = "f1"> <%= data.department %></font> </h5> </td>
+                                </tr>
+                                <tr>
+                                  <td> <h5 id = "name" > <font id="f2"> แผนก :  </font> <font id = "f1"><%= data.subdepartment %></font> </h5> </td>
+                                <tr>
+                                <tr>
+                                  <td> <h5 id = "name" > <font id="f2"> ตำแหน่ง : </font> <font id = "f1"> <%= data.position %></font> </h5> </td>
+                                </tr>
+                                <tr>
+                                  <td> <h5 id = "name" > <font id="f2"> บริษัท : </font> <font id = "f1"> <%= data.companyname %></font> </h5> </td>
+                                </tr>
+                                <tr>
+                                  <td> <h5 id = "name" > <font id="f2"> ชื่อผู้ใช้ : </font> <font id = "f1"> <%= data.username %></font> </h5> </td>
+                                </tr>
+                                <tr>
+                                  <td> <h5 id = "name" ><font id="f2">  รหัสผ่าน :</font> <font id = "f1">  <%= data.password %> </font></h5> </td>
+                                </tr>
+                                </tbody>
+                              </table>
+                            <br>
+                              <a href="/register" class="btn btn-info w3-left" > กลับ </a>
+                                <a href="/register/delete/<%= data.emid %>" class="btn btn-success w3-right" id = "yes"> ยืนยัน</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+      tr{
+        color: #5a5a5a;
+      }
+
+
+        
+    </style>
+
+    <%- include ("../../views/_footer") %>

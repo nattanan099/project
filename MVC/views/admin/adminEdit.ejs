@@ -1,0 +1,53 @@
+<%- include ("../../views/_headeradmin") %>
+    <div class="container mt-5">
+        <div class="row" style="width: 800px;">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/admin/update/<%= data.id %>" method="post">
+                            <center>
+                                <h1 style="color : #5a5a5a">แก้ไขข้อมูลผู้ดูแล</h1>
+                            </center>
+                            <br>
+                            <br>
+                            
+                            <div class="form-group">
+                                <h5>  ชื่อผู้ใช้  <br> 
+                                <input type="text" id="re1" name="username" value="<%=data.username%>" class="form-control" required>
+                            </h5>
+                            </div>
+                            <div class="form-group">
+                                <h5>
+                                รหัสผ่าน
+                                <input type="password" id = "re1" name="password" value="<%=data.password %>" class="form-control" required>
+                                </h5>
+                            </div>
+                            <div class="form-group">
+                                <h5>  ชื่อ<br>
+                                    <input type="text" id="re1" name="firstname" value="<%=data.firstname%>" class="form-control" required>
+                                </h5>
+                                </div>
+                                <div class="form-group">
+                                    <h5> 
+                                    นามสกุล
+                                    <input type="text" id="re1" name="lastname" value="<%=data.lastname %>" class="form-control" required> 
+                                 </h5>
+                            </div>
+                            <br>
+                              <a href="/admin" class="btn btn-info w3-left"  align = "left"> กลับ </a>
+                                <button type="submit" class="btn btn-success w3-right" id = "yes"> ยืนยัน </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+    
+        div{
+            color : #5a5a5a;
+        }
+    </style>
+
+    <%- include ("../../views/_footer") %>

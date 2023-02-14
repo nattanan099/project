@@ -1,0 +1,45 @@
+<%- include ("../../views/_headeradmin") %>
+    <div class="container mt-5">
+      <div class="w3-main w3-content w3-padding" style="max-width:600px;margin-top:5px">
+        <div class="w3-row-padding w3-padding-16 w3-center">                                  
+                <div class="card">
+                    <div class="card-body">
+                            <form action="/admin/del/<%= data.id %>" method="post">
+                                <center>
+                                    <h1 style="color:#5a5a5a">ยืนยันการลบข้อมูลของผู้ดูแล</h1>
+                                </center>
+                                <br>
+                                <table class = "table  table-bordered table-hover w3-left-align" >
+                                    <tbody>
+                                      <tr >
+                                          <td> <h5 id = "name" > <font> ชื่อผู้ใช้  : </font>    <%= data.username%>     </h5> </td>
+                                        </tr>
+                                        <tr>
+                                          <td> <h5 id = "name" > <font> รหัสผ่าน : </font>  <%= data.password %> </h5> </td>
+                                        </tr>
+                                        <tr>
+                                          <td> <h5 id = "name" > <font> ชื่อ : </font>  <%= data.firstname %>  <%= data.lastname %></h5> </td>
+                                        </tr>
+                                        
+                                          
+                                      </tbody>
+                                    </table>
+                                  <br>
+                                    <a href="/admin" class="btn btn-info w3-left" align = "left"> กลับ </a>
+                                    <a href="/admin/delete/<%= data.id %>" class="btn btn-success w3-right" id = "yes"> ยืนยัน</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+      
+        tr{
+          color: #5a5a5a;
+        }
+        font{
+          font-weight: bold;
+        }
+    </style>
+
+    <%- include ("../../views/_footer") %>

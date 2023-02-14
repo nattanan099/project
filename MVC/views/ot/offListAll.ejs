@@ -1,0 +1,117 @@
+<%if(session.admin){%>
+    <%- include ("../../views/_headeradmin") %>
+    <%}else{%>
+        <%- include ("../../views/_headerleader") %>
+    <%}%>
+    <br>
+    <br>
+    <h1 align="center">การจัดการข้อมูลของ OT </h1>
+    <div class="continer" align="center" style="width: 1480px">
+        <div class="row mt-4">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+              
+                
+                    <table class="table table-bordered table-hover">
+                        <thead align="center">
+                            <tr class="table-active ">
+                                <th>ลำดับ</th>
+                                <th>ชื่อ-นามสกุล</th>
+                                <th>วันที่ทำ OT </th>
+                                <th>เวลาเริ่มทำ OT - สิ้นสุด OT</th>
+                                <th>รวมเวลา ชม./นาที</th>
+                                <th>วันปกติ</th>
+                                <th>วันหยุด</th>
+                                <th>รายละเอียดของงานที่ทำนอกเวลา</th>
+                                <th>สถานะ</th>
+                                <th>ตัวเลือก</th>
+                              
+                            </tr>
+                        </thead>
+                        <tbody align="center">
+                            <% if(data){ %>
+                                <% for(var i=0 ; i < data.length;i++){ %>
+                                 
+                                    <tr>
+                                        <td>
+                                            <%= (i+1) %>
+                                        </td>
+                                        <td>
+                                            <%= data[i].sex %> <%= data[i].firstname %>
+                                                <%= data[i].lastname %>
+                                        </td>
+                                        <td>
+                                            <%= data[i].otdo %>
+                                        </td>
+                                        <td>
+                                            <%= data[i].otds %>  -  <%= data[i].otde %> 
+                                        </td>
+                                      
+                                        <td>
+                                            <%if(data[i].otds.split(":")[1] < data[i].otde.split(":")[1]){%>
+                                                <%=( ( ( (Number(data[i].otde.split(":")[1]) - Number(data[i].otds.split(":")[1]) - Number(data[i].break_time.split(":")[0]) ) *60 )
+                                                + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2]) - Number(data[i].break_time.split(":")[1]) ) ) / 60 )  %>     
+                                                <%}else if(data[i].otds.split(":")[1] > data[i].otde.split(":")[1]){%>
+                                                    <%=( ( ( ((Number(data[i].otde.split(":")[1]) + 24 ) - Number(data[i].otds.split(":")[1]) - Number(data[i].break_time.split(":")[0]) ) *60 )
+                                                    + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2]) - Number(data[i].break_time.split(":")[1]) ) ) / 60 )  %>     
+                                                    <%}%>
+                                                  
+                                        </td>
+                                
+                                       
+                                      
+                                         <td>
+                                             <%if(data[i].otdo.split(" ")[0] == "Monday" || data[i].otdo.split(" ")[0] == "Tuesday" || data[i].otdo.split(" ")[0] == "Wednesday" || data[i].otdo.split(" ")[0] == "Thursday" || data[i].otdo.split(" ")[0] == "Friday"|| data[i].otdo.split(" ")[0] == "Saturday"){%>
+                                                 <font color = "green"> ✓</font>
+                                                 <%}else{%>
+                                                     -
+                                                 <%}%>
+                                         </td>
+                                         <td>
+                                             <%if(data[i].otdo.split(" ")[0] == "Sunday"){%>
+                                                 <font color = "green"> ✓</font>
+                                                 <%}else{%>
+                                                     -
+                                                 <%}%>
+                                         </td>
+                                         <td>
+                                            <%= data[i].detail %> 
+                                        </td>
+                                        <td>
+                                            <%if(data[i].statusot == 0){%>
+                                                <font color="red"> รอการยืนยัน </font>
+                                                <%}else if (data[i].statusot == 1){%>
+                                                    <font color="green">คิดเป็นค่า OT</font>
+                                                <%}else if(data[i].statusot == 2){%>
+                                                    <font color="red">ชดเชยวัน</font>
+                                                <%}%>
+                                        </td>
+                                    <td>
+                                        <a href="/ot/edit/<%= data[i].otid %>" class="btn btn-info" style="width: 96px;"> แก้ไข</a>
+                                        <a href="/ot/del/<%= data[i].otid %>" class="btn btn-danger" style="width: 96px;"> ลบ</a>   
+                                    </td>
+                                    </tr>
+                               
+                                        <% } %>
+                                        <% } %>
+                        </tbody>
+                    </table>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <style>
+        #h1id {
+            position: relative;
+            margin-left: 44%;
+        }
+
+        #aid {
+            position: relative;
+            font-size: 18px;
+            margin-left: 68.7%;
+        }
+    </style>
+
+    <%- include ("../../views/_footer") %>

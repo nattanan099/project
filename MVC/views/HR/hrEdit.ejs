@@ -1,0 +1,193 @@
+<%if(session.admin){%>
+    <%- include ("../../views/_headeradmin") %>
+    <%}else if (session.hr){%>
+    <%- include ("../../views/_headerhr") %>
+    <%}%>
+    <div class="w3-main w3-content w3-padding" style="max-width:800px;margin-top:5px" id="form1">
+        <div class="w3-row-padding w3-padding-16">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/hr/update/<%= data.vid %>" method="post">
+                            <center>
+                                <h3 style="font-weight: bold;">แบบประเมินพนักงานระดับปฏิบัติการ</h3>
+                                <h3 >ประจำปี <%=session.time%> ระหว่างวันที่ 1 มกราคม - 31 ธันวาคม <%=session.time%></h3>
+                            </center>
+                            <br>
+                            <h5>
+                                <div class="w3-container">
+                                    ผู้ถูกประเมิน : <font id = "idname"> <%= data.sex %> <%= data.firstname %> <%= data.lastname %> </font> <font id="idnickname"> ชื่อเล่น : </font> <font id="idnickname2"><%= data.nickname %></font> 
+
+                                </div> <br>                        
+                                <div class="w3-container">
+                                    <div class="w3-col" style="width:80px">
+                                      <font id="f1"> ลาป่วย: <font color="red"> * </font>
+                                      </font>
+                                    </div>
+                                    <div class="w3-quarter">
+                                    <input type="text" name="datehour" id="la1" class="form-control" value="<%= data.datehour[0]%>" required>
+                                </div>
+                                <div class="w3-col" style="width:190px">
+                                  <font id="f1"> วัน </font>
+                                </div>
+                                <div class="w3-quarter">
+                                    <input type="text" name="datehour" placeholder="ชม." id="la2" class="form-control" value="<%= data.datehour[2] %>" required>
+                                     <font id="f1"></font>
+                                </div>
+                                <div class="w3-col" style="width:60px">
+                                  <font id="f1"> ชม. </font>
+                                </div>
+                              </div>
+                              <br>
+                                 <div class="w3-container">
+                                    <div class="w3-col" style="width:80px">
+                                        <font id="f1"> ลากิจ:</font>
+                                        <font color="red"> * </font>
+                                      </div>
+                                      <div class="w3-quarter">
+                                    <input type="text" name="datehour" placeholder="วัน" id="la3" class="form-control" value="<%= data.datehour[4]%>" required>
+                                </div>
+                                <div class="w3-col" style="width:190px">
+                                  <font id="f1">วัน </font>
+                                </div>
+                                <div class="w3-quarter">
+                                    <input type="text" name="datehour" placeholder="ชม." id="la4" class="form-control" value="<%= data.datehour[6] %>" required>
+                                </div>
+                                <div class="w3-col" style="width:60px">
+                                  <font id="f1">ชม.</font>
+                                </div>
+                              </div>
+                              <br>
+
+
+                                <div class="w3-container">
+                                    <div class="w3-col" style="width:100px">
+                                        <font id="f1"> ลาพักร้อน:<font color="red"> * </font>
+                                        </font>
+                                      </div>
+                                      <div class="w3-quarter">
+                                    <input type="text" name="datehour" placeholder="ลาพักร้อน" id="la5" class="form-control" value="<%= data.datehour[8]%>" required>
+                                </div>
+                                <div class="w3-col" style="width:170px">
+                                  <font id="f1">วันมาทำงานสาย:<font color="red"> * </font>
+                                  </font>
+                                </div>
+                                <div class="w3-quarter">
+                                    <input type="text" name="datehour" placeholder="วันมาทำงานสาย" id="la6" class="form-control" value="<%= data.datehour[10]%>" required>
+                                </div>
+                            </div>
+                            <br>
+                                <div class="w3-container">
+                                    <div class="w3-col" style="width:100px">
+                                        <font id="f1"> ลาคลอด:<font color="red"> * </font>
+                                        </font>
+                                      </div>
+                                      <div class="w3-quarter">
+                                    <input type="text" name="datehour" placeholder="ลาคลอด" id="la7" class="form-control" value="<%= data.datehour[12]%>" required>
+                                </div>
+                                <div class="w3-col" style="width:170px">
+                                  <font id="f1">ลาบวช:</font>
+                                  <font color="red"> * </font>
+                                </div>
+                                <div class="w3-quarter">
+                                    <input type="text" name="datehour" placeholder="ลาบวช" id="la8" class="form-control" value="<%= data.datehour[14]%>" required>
+                                </div>
+                            </div>
+                            <br>
+
+                               <div class="w3-container">
+                          <div class="w3-col" style="width:100px">
+                            <font id="f1"> ลาอื่นๆ:</font>
+                            <font color="red"> * </font>
+                          </div>
+                          <div class="w3-quarter">
+                                    <input type="text" name="datehour" placeholder="ลาอื่นๆ" id="la9" class="form-control" value="<%= data.datehour[16]%>" required>
+                                </div>
+                                <div class="w3-col" style="width:170px">
+                                  <font id="f1">ขาดงาน: </font>
+                                  <font color="red"> * </font>
+                                </div>
+                                <div class="w3-quarter">
+                                    <input type="text" name="datehour" placeholder="ขาดงาน" id="la10" class="form-control" value="<%= data.datehour[18]%>" required>
+                                </div>
+                            </div>
+                            <br>
+
+                                <div class="w3-container">
+                                   <div class="w3-col" style="width:140px">
+                            <font id="f1"> เตือนด้วยวาจา:<font color="red"> * </font>
+                            </font>
+                          </div>
+                          <div class="w3-quarter">
+                                    <input type="text" name="datehour" placeholder="เตือนด้วยวาจา" id="la11" class="form-control" value="<%= data.datehour[20]%>" required>
+                                </div>
+                                <div class="w3-col" style="width:160px">
+                                  <font id="f1">เตือนด้วยหนังสือ:</font>
+                                  <font color="red"> * </font>
+                                </div>
+                                <div class="w3-quarter">
+                                    <input type="text" name="datehour" placeholder="เตือนด้วยหนังสือ" id="la12" class="form-control" value="<%= data.datehour[22]%>" required>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="w3-container">
+                                <div class="w3-col" style="width:100px">
+                                  <font id="f1">พักงาน: </font>
+                                  <font color="red"> * </font>
+                                </div>
+                                <div class="w3-quarter">
+                                    <input type="text" name="datehour" placeholder="พักงาน" id="la13" class="form-control" value="<%= data.datehour[24]%>" required>
+                                </div>
+                            </div>
+        
+                            <br>
+                                <a href="/hrrecord/<%=data.emid%>" class="btn btn-info w3-left" align="right"> กลับ </a>
+
+                                <button type="submit" class="btn btn-success w3-right" id="yes"> ยืนยัน </button>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        div{
+            color: #5a5a5a;
+            font-weight: bold;
+        }
+      
+        #idname{
+            font-weight: normal;
+        }
+
+        #idnickname2{
+
+            font-weight: normal;
+        }
+        #f1 {
+            font-weight: normal;
+        }
+
+        </style>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var elements = document.getElementsByTagName("INPUT");
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].oninvalid = function (e) {
+                    e.target.setCustomValidity("");
+                    if (!e.target.validity.valid) {
+                        e.target.setCustomValidity("กรุณากรอกช่องนี้");
+                    }
+                };
+                elements[i].oninput = function (e) {
+                    e.target.setCustomValidity("");
+                };
+            }
+        })
+
+    </script>
+
+    <%- include ("../../views/_footer") %>

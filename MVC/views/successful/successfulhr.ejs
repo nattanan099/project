@@ -1,0 +1,26 @@
+<%- include ("../../views/_header") %>
+<div class="w3-main w3-content w3-padding" style="max-width:800px;margin-top:40px">
+    <div class="w3-row-padding w3-padding-16 w3-center" >
+                <div class="card">
+                    <div class="card-body"><br><br>
+                        <form action="" method="post" id="fromlist">
+                            <center>
+                                <h1 style="color:#5a5a5a;">กรอกข้อมูลการประเมินสำเร็จ</h1>
+                            </center>
+                            <br>
+                            <div class="w3-rest">
+                            <%if(session.admin){%>
+                                <a href="/hrlistadmin" class="btn btn-info" id="back" align="right"> เสร็จสิ้น </a>
+                                <%}else if(session.hr){%>
+                                <a href="/hrlist" class="btn btn-info" id="back" align="right"> เสร็จสิ้น </a>
+                                <%}%>
+                            </div>                                                                                                                                        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+    <%- include ("../../views/_footer") %>

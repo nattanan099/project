@@ -1,0 +1,56 @@
+<%- include ("../../views/_header") %>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+
+
+
+                            <form action="/ot/del/<%= data.otid %>" method="post">
+                                <center>
+                                    <h1 style="color:#5a5a5a;">ยืนยันการลบข้อมูลของรายการ</h1>
+                                </center>
+                                <br>
+                                <table class = "table  table-bordered table-hover">
+                                    <tbody>
+                                      <tr >
+                                          <td> <h5 id = "name" ><font style="font-weight: bold;">  ชื่อ-นามสกุล  : </font>  <font id="f">  <%= data.sex %> <%= data.firstname %> <%= data.lastname %>  </font>  </h5> </td>
+                                        </tr>
+                                        <tr>
+                                          <td> <h5 id = "name" ><font style="font-weight: bold;">  วันที่ทำ OT :  </font>  <font id="f">  <%= data.otdo %></font> </h5> </td>
+                                        </tr>
+                                        <tr>
+                                          <td> <h5 id = "name" > <font style="font-weight: bold;"> เวลาเริ่มทำ OT - สิ้นสุด OT :  </font>  <font id="f">  <%= data.otds %>  -  <%= data.otde %> </font> </h5> </td>
+                                        </tr>
+                                        <tr>
+                                            <td> <h5 id = "name" > <font style="font-weight: bold;">รายละเอียดของงานที่ทำนอกเวลา : </font> <font id="f">  <%= data.detail %> </font></h5> </td>
+                                          </tr>
+                                        
+                                          
+                                      </tbody>
+                                    </table>
+                                  <br>
+                                 
+                                    <a href="/otlistadmin" class="btn btn-info" align = "left"> กลับ </a>
+                                   
+                                    <a href="/ot/delete/<%= data.otid %>" class="btn btn-success w3-right" id = "yes"> ยืนยัน</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+     th{
+        color: #5a5a5a;
+     }
+     tr{
+        color: #5a5a5a;
+     }
+        #f{
+            font-weight: normal;
+        }
+    </style>
+
+    <%- include ("../../views/_footer") %>

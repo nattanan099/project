@@ -1,0 +1,54 @@
+<%- include ("../../views/_headeradmin") %>
+    <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:5px">
+        <div class="w3-row-padding w3-padding-16 w3-center">                                  
+            <div class="w3-rest  w3-container">
+                <h1 id="h1id"> รายชื่อผู้ดูแล </h1>                
+                              
+                <div style="overflow-x:auto;" align="center">
+                    <a href="admin/add" class="btn btn-success w3-right" id="aid"> เพิ่มผู้ดูแล </a> <br><br>
+                    <table class="table table-bordered table-hover">
+                        <thead align="center">
+                            <tr class="table-active ">
+                                <th>ลำดับ</th>
+                                <th>ชื่อ</th>
+                                <th>ตัวเลือก</th>
+                            </tr>
+                        </thead>
+                        <tbody align="center">
+                            <% if(data){ %>
+                                <% for(var i=0 ; i < data.length;i++){ %>
+                                    <tr>
+                                        <td>
+                                            <%= (i+1) %>
+                                        </td>
+                                        <td align="left">
+                                            <%= data[i].firstname %>
+                                                <%= data[i].lastname %>
+                                        </td>
+                                        <td>
+                                            <a href="/admin/detail/<%= data[i].id %>"
+                                                class="btn btn-warning">รายระเอียด</a>
+                                            <a href="/admin/edit/<%= data[i].id %>" class="btn btn-info"> แก้ไข</a>
+                                            <a href="/admin/del/<%= data[i].id %>" class="btn btn-danger"> ลบ</a>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                        <% } %>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <style>
+        th {
+            color: #5a5a5a;
+        }
+
+        td {
+            color: #5a5a5a;
+        }
+    </style>
+
+    <%- include ("../../views/_footer") %>

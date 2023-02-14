@@ -1,0 +1,27 @@
+<%- include ("../views/_headerhr") %>
+
+
+
+    <div class="w3-main w3-content w3-padding " style="max-width:1200px;margin-top:150px">
+        <div class="w3-row-padding w3-padding-16 w3-center">
+            </h1>
+            <div class="w3-half w3-container ">
+                <a href="/hrlist" id="iconme" "> <img border=" 0" alt="W3Schools" src="3220315.png"
+                    style="width:57%"></a><br>
+                <a href="/hrlist" id="idme">
+                    <font color="#566573" style="font-size: 195%;"> การประเมินการขาดลามาสาย </font>
+                </a>
+            </div>
+            <div class="w3-half w3-container ">
+                <a href="/employee/<%= session.hrid %>" id="iconls" "> <img border=" 0" alt="W3Schools" src="417777.png"
+                    style="width:57%"></a><br>
+                <a href="/employee/<%= session.hrid %>" id="idls">
+                    <font color="#566573" style="font-size: 195%;">ประเมินตนเอง </font>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <%- include ("../views/_footer") %>

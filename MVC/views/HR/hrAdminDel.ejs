@@ -1,0 +1,127 @@
+<%- include ("../../views/_header") %>
+<div class="w3-main w3-content w3-padding" style="max-width:1000px;margin-top:5px" id="form1">
+    <div class="w3-row-padding w3-padding-16">
+                <div class="card">
+                    <div class="card-body">
+                            <form action="/hrlistadmin/del/<%= data.vid %>" method="post">
+                                <center>
+                                    <h1 style="font-weight: bold; color:#5a5a5a;">ยืนยันการลบข้อมูลของประวัติการประเมินของพนักงาน</h1>
+                                </center>
+                                <br>
+                                <table class = "table  table-bordered table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <h5 id="name"> <font id="f2"> ล่าป่วย :</font> <font id="f1">
+                                                        <%= data.datehour.slice(0,-24) %> วัน <%=
+                                                                data.datehour.slice(2,-22) %> ชม. </h5>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h5 id="name"><font id="f2"> ลากิจ :</font><font id="f1">
+                                                        <%= data.datehour.slice(4,-20) %> วัน <%=
+                                                                data.datehour.slice(6,-18) %>
+                                                                ชม. </h5>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h5 id="name"><font id="f2"> ลาพักร้อน :</font><font id="f1">
+                                                        <%= data.datehour.slice(8,-16) %> วัน</h5>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h5 id="name"><font id="f2"> วันมาทำงานสาย :</font><font id="f1">
+                                                        <%= data.datehour.slice(10,-14) %>
+                                                            วัน</h5>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h5 id="name"><font id="f2"> ลาคลอด :</font><font id="f1">
+                                                        <%= data.datehour.slice(12,-12) %>
+                                                            วัน</h5>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h5 id="name"><font id="f2"> ลาบวช :</font><font id="f1">
+                                                        <%= data.datehour.slice(14,-10) %>
+                                                            วัน</h5>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h5 id="name"><font id="f2"> ลาอื่นๆ :</font><font id="f1">
+                                                        <%= data.datehour.slice(16,-8) %> วัน</h5>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h5 id="name"><font id="f2"> ขาดงาน :</font><font id="f1">
+                                                        <%= data.datehour.slice(18,-6) %> วัน</h5>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h5 id="name"><font id="f2"> เตือนด้วยวาจา </font> :<font id="f1"> <%= data.datehour.slice(20,-4) %>
+                                                            วัน</h5>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h5 id="name"><font id="f2"> เตือนด้วยหนังสือ :</font> <font id="f1"><%= data.datehour.slice(22,-2)
+                                                            %> วัน</font>
+                                                </h5>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h5 id="name"><font id="f2"> พักงาน :</font><font id="f1">
+                                                        <%= data.datehour.slice(24) %> วัน</h5>
+                                                </font>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <h5 id="name"><font id="f2"> วัน/เดือน/ปี :</font><font id="f1">
+                                                        <%=data.vdt%>
+                                                    </font>
+                                                </h5>
+                                            </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  <br>
+                                    <a href="/hrrecord/<%=data.emid%>" class="btn btn-info w3-left">กลับ </a>
+                                    <a href="/hrlistadmin/delete/<%=data.vid%>" class="btn btn-success w3-right" id="yes"> ยืนยัน </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        tr{
+            color: #5a5a5a;
+        }
+      
+        #f1{
+            font-weight: normal;
+        }
+        #f2{
+            font-weight: bold;
+        }
+    </style>
+
+    <%- include ("../../views/_footer") %>

@@ -1,0 +1,74 @@
+<%if(session.admin){%>
+    <%- include ("../views/_headeradmin") %>
+    <%}else if (session.hr){%>
+    <%- include ("../views/_headerhr") %>
+    <%}else if (session.employee){%>
+    <%- include ("../views/_headereemployee") %>
+    <%}else if (session.leader){%>
+    <%- include ("../views/_headerleader") %>
+    <%}else if (session.leaderinstall || session.leaderma || session.leaderinstallandma){%>
+    <%- include ("../views/_headerleader2") %>
+    <%}%>
+    <br><br>
+    <%if(session.admin){%>
+        <h1 align="center" >ยินดีต้อนรับคุณ : <%= session.admin %> </h1>  
+    <%}else if (session.hr){%>
+        <h1 align="center" >ยินดีต้อนรับคุณ : <%= session.hr %> </h1>
+        <%}else if (session.employee){%>
+            <h1 align="center" >ยินดีต้อนรับคุณ : <%= session.employee %> </h1>
+            <%}else if (session.leader){%>
+                <h1 align="center" >ยินดีต้อนรับคุณ : <%= session.leader %> </h1>
+                <%}else if(session.leaderinstallandma){%>
+                    <h1 align="center" >ยินดีต้อนรับคุณ : <%= session.leaderinstallandma %> </h1>
+                <%}else if (session.leaderinstall){%>
+                    <h1 align="center" >ยินดีต้อนรับคุณ : <%= session.leaderinstall %> </h1>
+                    <%}else if (session.leaderma){%>
+                        <h1 align="center" >ยินดีต้อนรับคุณ : <%= session.leaderma %> </h1>
+                        <%}else{%>
+                            <h2 align="center" >ยินดีต้อนรับคุณ : prem prem </h2>
+                            <%}%> 
+
+
+
+                        <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:40px">
+                            <div class="w3-row-padding w3-padding-16 w3-center" id="food">
+                        
+                                        <div class="w3-half" >
+                                        <a href="/homeot" id = "iconls" "> <img alt="W3Schools" src="working.png" style="width:55%"></a>
+                                        <h5><a href="/homeot" id = "idls"  > <font color ="#566573" style="font-size: 195%;"  >OT บุคคลภายในบริษัท</font>  </a></h5>
+                                        
+                                    </div>
+                                    
+                                    
+                                    <div class="w3-half">
+                                                    <%if(session.admin){%>
+                                                        <a href="/homeassessment"   "" id= "iconin"> <img border="0" alt="W3Schools" src="paper.png" style="width:55%"></a>
+                                                        <h5> <a href="/homeassessment" id = "idin"  > <font color ="#566573"style="font-size: 195%;" >ประเมินบุคคลภายในบริษัท</font>  </a></h5>
+                                                        <%}else if (session.hr){%>
+                                                        <a href="/homehr"   "" id= "iconin"> <img border="0" alt="W3Schools" src="paper.png" style="width:55%"></a>
+                                                        <h5><a href="/homehr" id = "idin"  > <font color ="#566573" style="font-size: 195%;">ประเมินบุคคลภายในบริษัท</font>  </a></h5>
+                                                        <%}else if (session.employee){%>
+                                                            <a href="/homeemployee"   "" id= "iconin"> <img border="0" alt="W3Schools" src="paper.png" style="width:55%"></a>
+                                                            <h5><a href="/homeemployee" id = "idin"  > <font color ="#566573" style="font-size: 195%;">ประเมินบุคคลภายในบริษัท</font>  </a>    </h5>                                                        
+                                                            <%}else if (session.leader){%>
+                                                                <a href="/homeleader"   "" id= "iconin"> <img border="0" alt="W3Schools" src="paper.png" style="width:55%"></a>
+                                                                <h5> <a href="/homeleader" id = "idin"  > <font color ="#566573"style="font-size: 195%;" >ประเมินบุคคลภายในบริษัท</font>  </a></h5>
+                                                                <%}else if(session.leaderinstallandma){%>
+                                                                <a href="/homeinstallandma"   "" id= "iconin"> <img border="0" alt="W3Schools" src="paper.png" style="width:55%"></a>
+                                                                <h5> <a href="/homeinstallandma" id = "idin"  > <font color ="#566573" style="font-size: 195%;">ประเมินบุคคลภายในบริษัท</font>  </a></h5>
+                                                                <%}else if (session.leaderinstall){%>
+                                                                    <a href="/homeinstall"   "" id= "iconin"> <img border="0" alt="W3Schools" src="paper.png" style="width:55%"></a>
+                                                                    <h5>  <a href="/homeinstall" id = "idin"  > <font color ="#566573" style="font-size: 195%;">ประเมินบุคคลภายในบริษัท</font>  </a></h5>
+                                                                    <%}else if (session.leaderma){%>
+                                                                        <a href="/homema"   "" id= "iconin"> <img border="0" alt="W3Schools" src="paper.png" style="width:55%"></a>
+                                                                        <h5>   <a href="/homema" id = "idin"  > <font color ="#566573"style="font-size: 195%;" >ประเมินบุคคลภายในบริษัท</font>  </a></h5>
+                                                                        <%}else{%> 
+                                                                            <a href="/"   "" id= "iconin"> <img border="0" alt="W3Schools" src="paper.png" style="width:55%"></a>
+                                                                            <h5>    <a href="/" id = "idin"  > <font color ="#566573" style="font-size: 195%;">ประเมินบุคคลภายในบริษัท</font>  </a></h5>
+                                                                            <%}%>    
+                                                                        </div>
+            
+                            
+                        </div>
+
+<%- include ("../views/_footer") %>

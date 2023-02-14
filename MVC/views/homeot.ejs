@@ -1,0 +1,87 @@
+<%if(session.admin){%>
+    <%- include ("../views/_headeradmin") %>
+        <%}else if (session.hr){%>
+            <%- include ("../views/_headerhr") %>
+                <%}else if (session.employee){%>
+                    <%- include ("../views/_headereemployee") %>
+                        <%}else if (session.leader){%>
+                            <%- include ("../views/_headerleader") %>
+                                <%}else if (session.leaderinstall || session.leaderma || session.leaderinstallandma){%>
+                                    <%- include ("../views/_headerleader2") %>
+                                        <%}else{%>
+                                            <%- include ("../views/_headerleader") %>
+                                                <%}%>
+
+        <br><br><br><br>
+        </h1>
+
+        <div class="w3-main w3-content w3-padding " style="max-width:1580px;margin-top:49px">
+            <div class="w3-row-padding w3-padding-16 w3-center" >
+               
+                    
+            <div class="w3-third w3-container ">
+            <%if(session.admin){%>
+                <a href="/ot/add/<%=session.adminid%>" id="idleft" ><img border="0" alt="W3Schools" src="working.png" style="width:65%"></a><br>
+                <a href="/ot/add/<%=session.adminid%>" id="fleft"><font color="#566573" style="font-size: 250%;"> OT </font>
+                <%}else if(session.manager){%>
+                    <a href="/ot/add/<%=session.managerid%>" id="idleft"  ><img border="0"alt="W3Schools" src="working.png" style="width:65%"></a><br>
+                    <a href="/ot/add/<%=session.managerid%>" id="fleft"><font color="#566573" style="font-size: 250%;"> OT </font>
+                    <%}else if(session.leaderinstallandma){%>
+                        <a href="/ot/add/<%=session.leaderinstallandmaid%>" id="idleft"><img border="0" alt="W3Schools" src="working.png" style="width:65%"></a><br>
+                        <a href="/ot/add/<%=session.leaderinstallandmaid%>" id="fleft"><font color="#566573" style="font-size: 250%;"> OT </font>
+                        <%}else if(session.leaderinstall){%>
+                            <a href="/ot/add/<%=session.leaderinstallid%>" id="idleft" ><img border="0" alt="W3Schools" src="working.png" style="width:65%"></a><br>
+                            <a href="/ot/add/<%=session.leaderinstallid%>" id="fleft"><font color="#566573" style="font-size: 250%;"> OT </font>
+                            <%}else if(session.leaderma){%>
+                                <a href="/ot/add/<%=session.leadermaid%>" id="idleft" ><img border="0" alt="W3Schools" src="working.png" style="width:65%"></a><br>
+                                <a href="/ot/add/<%=session.leadermaid%>" id="fleft"><font color="#566573" style="font-size: 250%;"> OT </font>
+                                <%}else if(session.leader){%>
+                                    <a href="/ot/add/<%=session.leaderid%>" id="idleft"><img border="0" alt="W3Schools" src="working.png" style="width:65%"></a><br>
+                                    <a href="/ot/add/<%=session.leaderid%>" id="fleft"><font color="#566573" style="font-size: 250%;"> OT </font>
+                                    <%}else if(session.hr){%>
+                                        <a href="/ot/add/<%=session.hrid%>" id="idleft" ><img border="0" alt="W3Schools" src="working.png" style="width:65%"></a><br>
+                                        <a href="/ot/add/<%=session.hrid%>" id="fleft"><font color="#566573" style="font-size: 250%;"> OT </font>
+                                        <%}else if(session.employee){%>
+                                            <a href="/ot/add/<%=session.employeeid%>" id="idleft" ><img border="0" alt="W3Schools" src="working.png" style="width:65%"></a><br>
+                                            <a href="/ot/add/<%=session.employeeid%>" id="fleft"><font color="#566573" style="font-size: 250%;"> OT </font>
+                                            <%}else{%>
+                                                <a href="#" id="idleft" ><img border="0" alt="W3Schools" src="working.png" style="width:65%"></a><br>
+                                                <a href="#" id="fleft"><font color="#566573" style="font-size: 250%;"> OT </font>                                                
+                                                    <%}%>
+                                                </div>
+                                                    
+                                                    <div class="w3-third w3-container">
+
+                                                <a href="/homeothistory" id="idmid" > <img border="0" alt="W3Schools" src="history.png"style="width:65%"></a><br>
+                                                <a href="/homeothistory" id="fmid"><font color="#566573" style="font-size: 250%;">ประวัติ </font>
+                                            
+                                                </div>
+                                                <div class="w3-third w3-container">
+                                                
+                                                    <%  if(session.admin || session.employee || session.hr){%>
+                                                        <a href="/homeotlist" id="idright" > <img border="0"alt="W3Schools" src="check-list.png" style="width:65%"></a><br>
+                                                        <a href="/homeotlist" id="fright"><font color="#566573" style="font-size: 250%;">รายการยืนยัน OT </font>
+                                                        <% }else if(session.leaderinstallandma ){%>
+                                                            <a href="/otlistleaderinstallandMa" id="idright" > <img border="0"alt="W3Schools" src="check-list.png" style="width:65%"></a><br>
+                                                            <a href="/otlistleaderinstallandMa" id="fright"><font color="#566573" style="font-size: 250%;">รายการยืนยัน OT </font>
+                                                            <%}else if(session.leaderinstall){%>
+                                                                 <a href="/otlistleaderinstall" id="idright" > <img border="0"alt="W3Schools" src="check-list.png" style="width:65%"></a><br>
+                                                                 <a href="/otlistleaderinstall" id="fright"><font color="#566573" style="font-size: 250%;">รายการยืนยัน OT </font>
+                                                                 <% }else if(session.leaderma){%>
+                                                                    <a href="/otlistleaderMa" id="idright" > <img border="0"alt="W3Schools" src="check-list.png" style="width:65%"></a><br>
+                                                                    <a href="/otlistleaderMa" id="fright"><font color="#566573" style="font-size: 250%;">รายการยืนยัน OT </font>
+                                                                    <% }else if(session.leader){%>
+                                                                         <a href="/otlistleaderl/<%=session.department%>" id="idright" > <img border="0"alt="W3Schools" src="check-list.png" style="width:65%"></a><br>
+                                                                         <a href="/otlistleaderl/<%=session.department%>" id="fright"><font color="#566573" style="font-size: 250%;">รายการยืนยัน OT </font>
+                                                                         <% }else{%>
+                                                                              <a href="#" id="idright" > <img border="0"alt="W3Schools" src="check-list.png" style="width:65%"></a><br>
+                                                                              <a href="#" id="fright"><font color="#566573" style="font-size: 250%;">รายการยืนยัน OT </font>
+                                                                              <%}%>
+                                                                        
+                                                                            </div>
+            </div>
+    </div>
+</div>
+
+
+    <%- include ("../views/_footer") %>

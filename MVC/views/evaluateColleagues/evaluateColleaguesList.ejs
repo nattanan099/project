@@ -1,0 +1,67 @@
+<%- include ("../../views/_headeradmin") %>
+    <br>
+    <h1 id="h1id"> รายชื่อพนักงานบริษัท </h1>
+    <div class="continer" align="center">
+        <div class="row mt-4">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <table class="table table-bordered table-hover">
+                    <thead align="center">
+                        <tr class="table-active ">
+
+                            <th>ลำดับ</th>
+                            <th>ชื่อ</th>
+                            <th>ชื่อเล่น</th>
+                            <th>ตัวเลือก</th>
+                            
+                        </tr>
+                    </thead>
+
+                    <tbody align="center">
+                        <% if(data){ %>
+                            <% for(var i=0 ; i < data.length;i++){ %>
+                                <tr>
+                                    <td>
+                                        <%= (i+1) %>
+                                    </td>
+                                    <td align="left">
+                                        <%= data[i].sex %> <%= data[i].firstname %>
+                                            <%= data[i].lastname %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].nickname %>
+                                    </td>
+                                    <td>
+                                        <a href="/employee2/<%= data[i].emid %>" class="btn btn-primary"> กรอกข้อมูล</a>
+                                        <a href="/employeelistrecord/<%= data[i].emid %>" class="btn btn-secondary"> ประวัติ </a>
+                                    </td>
+                                </tr>
+                                <% } %>
+                                    <% } %>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+
+    
+    <style>
+        #h1id {
+            position: relative;
+            left: 40%;
+        }
+
+        #aid {
+            position: relative;
+            font-size: 18px;
+            left: 67.7%;
+        }
+
+    </style>
+
+
+    <%- include ("../../views/_footer") %>

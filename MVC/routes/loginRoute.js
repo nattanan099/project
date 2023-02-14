@@ -1,0 +1,25 @@
+const express = require('express');
+const router = express.Router();
+const controllerin = require('../controllers/loginController');
+
+router.get('/', controllerin.log);
+router.post('/login', controllerin.login);
+router.get('/homeassessment', controllerin.homeassessment);
+router.get('/homehr', controllerin.homehr);
+router.get('/homeleader', controllerin.homeleader);
+router.get('/homeinstallandma', controllerin.homeinstallandma);
+router.get('/homeinstall', controllerin.homeinstall);
+router.get('/homema', controllerin.homema);
+router.get('/logout', controllerin.logout);
+router.get("/successful", controllerin.success);
+router.get("/successfulregister", controllerin.successregister);
+router.get("/successemployee", controllerin.successemployee);
+router.get('/employee3', controllerin.employee);
+router.get('/successfulleader', controllerin.successleader);
+router.get('/successfulhr', controllerin.successfulhr);
+router.get('/homeemployee', controllerin.homeemployee);
+router.get('/home', controllerin.home);
+router.get('/homeot', controllerin.homeot);
+router.get('/homeothistory', controllerin.homeothistory);
+router.get('/homeotlist', controllerin.homeotlist);
+module.exports = router;

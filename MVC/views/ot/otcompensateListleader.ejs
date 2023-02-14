@@ -1,0 +1,111 @@
+<%if(session.admin){%>
+    <%- include ("../../views/_headeradmin") %>
+        <%}else if (session.hr){%>
+            <%- include ("../../views/_headerhr") %>
+                <%}else if (session.employee){%>
+                    <%- include ("../../views/_headereemployee") %>
+                        <%}else if (session.leader){%>
+                            <%- include ("../../views/_headerleader") %>
+                                <%}else if (session.leaderinstall || session.leaderma || session.leaderinstallandma){%>
+                                    <%- include ("../../views/_headerleader2") %>
+                                        <%}else{%>
+                                            <%- include ("../../views/_headerleader") %>
+                                                <%}%>
+        <div class="container mt-5" onclick="" id="form1">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div>
+                        <div >
+                            <div >
+                                <center>
+                                    <h1>ใบสรุปชดเชยวันล่วงเวลาทำงาน</h1>  <br>
+                                   
+
+                                </center>
+                                <table class="table table-bordered table-hover">
+                                    <thead align="center">
+                                        <tr class="table-active">
+                                            <th>ลำดับ</th>
+                                            <th>ชื่อ-นามสกุล</th>
+                                            <th>ตำแหน่ง</th>
+                                            <th>แผนก</th>
+                                            <th>ตัวเลือก</th>
+                                         
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody align="center">
+                                        <% if(data){ %>
+                                            <% for(var i=0 ; i < data.length;i++){ %>
+                                               
+                                                <tr>
+                                                    <td>
+                                                        <%= (i+1) %>
+                                                    </td>
+                                                    <td align="left">
+                                                        <%= data[i].sex %>
+                                                            <%= data[i].firstname %>
+                                                                <%= data[i].lastname %>
+                                                    </td>
+                                                    <td>
+                                                        <%=data[i].position%>
+                                                    </td>
+                                                    <td>
+                                                        <%=data[i].subdepartment%>
+                                                    </td>
+                                                    <td>
+                                                        <a href="/ot/otcompensateListleaderhistory/<%=data[i].emid%>" class="btn btn-primary">ประวัติ</a>
+                                                    </td>
+                                         
+                                                </tr>
+                                                <% } %>
+                                              
+                                                <% } %>
+                                              
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<br><br>
+
+    <style>
+        #yes {
+            margin-left: 81.7%;
+        }
+
+        #checkmark1 {
+            position: absolute;
+            margin-top: 0.6%;
+            margin-left: 0%;
+            height: 15px;
+            width: 15px;
+            background-color: #eee;
+        }
+
+        #checkmark2 {
+            position: absolute;
+            margin-top: 0.6%;
+            margin-left: 15%;
+            height: 15px;
+            width: 15px;
+            background-color: #eee;
+        }
+        #f1{
+            font-weight: normal;
+        }
+        th{
+            color: #5a5a5a;
+        }
+        tr{
+            color: #5a5a5a;
+        }
+    </style>
+
+    <%- include ("../../views/_footer") %>

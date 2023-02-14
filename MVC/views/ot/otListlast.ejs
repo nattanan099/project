@@ -1,0 +1,179 @@
+<%if(session.admin){%>
+    <%- include ("../../views/_headeradmin") %>
+    <%}else{%>
+        <%- include ("../../views/_headerleader") %>
+        <%}%>
+    <h1 align="center"> รายการ OT รอยืนยันความถูกต้อง </h1>
+    <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:5px">
+        <div class="w3-row-padding w3-padding-16 w3-center">                                  
+            <div class="w3-rest  w3-container">
+                <div style="overflow-x:auto;" align="center">
+                    <table class="table table-bordered table-hover">
+                        <thead align="center">
+                            <tr class="table-active ">
+                                <th>ลำดับ</th>
+                                <th>ชื่อ-นามสกุล</th>
+                                <th>วันที่ทำ OT </th>
+                                <th>เวลาเริ่มทำ OT - สิ้นสุด OT</th>
+                                <th>รวมเวลา ชม./นาที</th>
+                                <th>หักเวลาพัก ชม./นาที</th>
+                                <th>เวลาคงเหลือ ชม./นาที</th>
+                                <th>1.5 เท่า ชม./นาที</th>
+                                <th>2 เท่า ชม./นาที</th>
+                                <th>3 เท่า ชม./นาที</th>
+                                <th>วันปกติ</th>
+                                <th>วันหยุด</th>
+                                <th>รายละเอียดของงานที่ทำนอกเวลา</th>
+                                <th>สถานะ</th>
+                                <th>ตัวเลือก</th>
+                            </tr>
+                        </thead>
+                        <tbody align="center">
+                            <% if(data){ %>
+                                <% for(var i=0 ; i < data.length;i++){ %>
+                                    <%if(data[i].status == 1 ){%>
+                                    <tr>
+                                        <td>
+                                            <%= (i+1) %>
+                                        </td>
+                                        <td>
+                                            <%= data[i].sex %> <%= data[i].firstname %>
+                                                <%= data[i].lastname %>
+                                        </td>
+                                        <td>
+                                            <%= data[i].otdo %>
+                                        </td>
+                                        <td>
+                                            <%= data[i].otds %>  -  <%= data[i].otde %> 
+                                        </td>
+                                            <td>
+                                                 <%if(data[i].otds.split(":")[1] < data[i].otde.split(":")[1]){%>
+                                                <%=( ( ( (Number(data[i].otde.split(":")[1]) - Number(data[i].otds.split(":")[1])) *60 )
+                                                + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2])  ) ) / 60 )  %>     
+                                                <%}else if(data[i].otds.split(":")[1] > data[i].otde.split(":")[1]){%>
+                                                    <%=( ( ( ((Number(data[i].otde.split(":")[1]) + 24 ) - Number(data[i].otds.split(":")[1])  ) *60 )
+                                                    + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2])  ) ) / 60 )  %>     
+                                                    <%}%>
+                                                   
+                                            </td>
+                                       
+                                        <td>
+                                            <%= data[i].break_time[1]%> 
+                                        </td>
+                                        <td>
+                                            <%if(data[i].otds.split(":")[1] < data[i].otde.split(":")[1]){%>
+                                                <%=( ( ( (Number(data[i].otde.split(":")[1]) - Number(data[i].otds.split(":")[1]) - Number(data[i].break_time.split(":")[0]) ) *60 )
+                                                + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2]) - Number(data[i].break_time.split(":")[1]) ) ) / 60 )  %>     
+                                                <%}else if(data[i].otds.split(":")[1] > data[i].otde.split(":")[1]){%>
+                                                    <%=( ( ( ((Number(data[i].otde.split(":")[1]) + 24 ) - Number(data[i].otds.split(":")[1]) - Number(data[i].break_time.split(":")[0]) ) *60 )
+                                                    + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2]) - Number(data[i].break_time.split(":")[1]) ) ) / 60 )  %>     
+                                                    <%}%>
+                                                  
+                                        </td>
+                                
+                                       
+                                        <td>
+                                            <%if(data[i].otdo.split(" ")[0] == "Monday" || data[i].otdo.split(" ")[0] == "Tuesday" || data[i].otdo.split(" ")[0] == "Wednesday" || data[i].otdo.split(" ")[0] == "Thursday" || data[i].otdo.split(" ")[0] == "Friday"|| data[i].otdo.split(" ")[0] == "Saturday"){%>
+                                                 <%if(data[i].otds.split(":")[1] < data[i].otde.split(":")[1]){%>
+                                                     <%=( ( ( (Number(data[i].otde.split(":")[1]) - Number(data[i].otds.split(":")[1]) - Number(data[i].break_time.split(":")[0]) ) *60 )
+                                                     + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2]) - Number(data[i].break_time.split(":")[1]) ) ) / 60 )  %>     
+                                                     <%}else if(data[i].otds.split(":")[1] > data[i].otde.split(":")[1]){%>
+                                                         <%=( ( ( ((Number(data[i].otde.split(":")[1]) + 24 ) - Number(data[i].otds.split(":")[1]) - Number(data[i].break_time.split(":")[0]) ) *60 )
+                                                         + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2]) - Number(data[i].break_time.split(":")[1]) ) ) / 60 )  %>     
+                                                         <%}%>
+                                                        
+                                                 <%}else{%>
+                                                     -
+                                                 <%}%>
+                                         </td>
+                                         <td>
+                                             <%if(data[i].otdo.split(" ")[0] == "Sunday"){%>
+                                                 <%if(data[i].otds.split(":")[1] < data[i].otde.split(":")[1]){%>
+                                                     <%=( ( ( (Number(data[i].otde.split(":")[1]) - Number(data[i].otds.split(":")[1]) - Number(data[i].break_time.split(":")[0]) ) *60 )
+                                                     + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2]) - Number(data[i].break_time.split(":")[1]) ) ) / 60 )  %>     
+                                                     <%}else if(data[i].otds.split(":")[1] > data[i].otde.split(":")[1]){%>
+                                                         <%=( ( ( ((Number(data[i].otde.split(":")[1]) + 24 ) - Number(data[i].otds.split(":")[1]) - Number(data[i].break_time.split(":")[0]) ) *60 )
+                                                         + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2]) - Number(data[i].break_time.split(":")[1]) ) ) / 60 )  %>     
+                                                         <%}%>
+                                                        
+                                                 <%}else if(data[i].otdo.split(" ")[1] == "Sunday" &&  ( ( ( (Number(data[i].otde.split(":")[1]) - Number(data[i].otds.split(":")[1]) - Number(data[i].break_time.split(":")[0]) ) *60 )
+                                                 + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2]) - Number(data[i].break_time.split(":")[1]) ) ) / 60 ) >= 8){%>
+                                                     -
+                                                 <%}else {%>
+                                                     -
+                                                 <%}%>
+                                         </td>  
+                                         <td>
+                                             <%if(  data[i].otdo.split(" ")[0] == "Sunday" && ( ( ( (Number(data[i].otde.split(":")[0]) - Number(data[i].otds.split(":")[0]) - Number(data[i].break_time.split(":")[0]) ) *60 )
+                                             + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2]) - Number(data[i].break_time.split(":")[1]) ) ) / 60 ) >= 8){%>
+
+                                                 <%if(data[i].otds.split(":")[1] < data[i].otde.split(":")[1]){%>
+                                                     <%=( ( ( (Number(data[i].otde.split(":")[1]) - Number(data[i].otds.split(":")[1]) - Number(data[i].break_time.split(":")[0]) ) *60 )
+                                                     + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2]) - Number(data[i].break_time.split(":")[1]) ) ) / 60 )  %>     
+                                                     <%}else if(data[i].otds.split(":")[1] > data[i].otde.split(":")[1]){%>
+                                                         <%=( ( ( ((Number(data[i].otde.split(":")[1]) + 24 ) - Number(data[i].otds.split(":")[1]) - Number(data[i].break_time.split(":")[0]) ) *60 )
+                                                         + ( Number(data[i].otde.split(":")[2]) - Number(data[i].otds.split(":")[2]) - Number(data[i].break_time.split(":")[1]) ) ) / 60 )  %>     
+                                                         <%}%>
+                                                         
+                                             <% }else{%>
+                                                 -
+                                                 <%}%>
+                                         </td>
+                                         <td>
+                                             <%if(data[i].otdo.split(" ")[0] == "Monday" || data[i].otdo.split(" ")[0] == "Tuesday" || data[i].otdo.split(" ")[0] == "Wednesday" || data[i].otdo.split(" ")[0] == "Thursday" || data[i].otdo.split(" ")[0] == "Friday"|| data[i].otdo.split(" ")[0] == "Saturday"){%>
+                                                 <font color = "green"> ✓</font>
+                                                 <%}else{%>
+                                                     -
+                                                 <%}%>
+                                         </td>
+                                         <td>
+                                             <%if(data[i].otdo.split(" ")[0] == "Sunday"){%>
+                                                 <font color = "green"> ✓</font>
+                                                 <%}else{%>
+                                                     -
+                                                 <%}%>
+                                         </td>
+                                         <td>
+                                            <%= data[i].detail %> 
+                                        </td>
+                                        <td>
+                                            <%if(data[i].status == 1 ){%> 
+                                                <font color="green"> อนุมัติ </font>
+                                                <% }%> 
+                                        </td>
+
+                                        <td>
+                                            <form action="/ot/approvallast/<%= data[i].otid %>" method="post">
+                                                <button type="submit" class="btn btn-success"> ยืนยัน </button>
+                                              </form>
+                                              <br>
+
+                                            <a href="/ot/editlast/<%= data[i].otid %>" class="btn btn-info"> แก้ไข</a>
+                                            <%if(session.admin){%>
+                                            <a href="/ot/del/<%= data[i].otid %>" class="btn btn-danger"> ลบ</a>
+                                            <%}%>
+                                            
+                                            
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                        <% } %>
+                                        <% }%> 
+                        </tbody>
+                    </table>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <style>
+th{
+    color:#5a5a5a;
+}
+tr{
+    color:#5a5a5a;
+}
+
+    </style>
+
+    <%- include ("../../views/_footer") %>

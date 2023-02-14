@@ -1,0 +1,113 @@
+<%if(session.admin){%>
+    <%- include ("../../views/_headeradmin") %>
+        <%}else if (session.hr){%>
+            <%- include ("../../views/_headerhr") %>
+                <%}else if (session.employee){%>
+                    <%- include ("../../views/_headereemployee") %>
+                        <%}else if (session.leader){%>
+                            <%- include ("../../views/_headerleader") %>
+                                <%}else if (session.leaderinstall || session.leaderma || session.leaderinstallandma){%>
+                                    <%- include ("../../views/_headerleader2") %>
+                                        <%}else{%>
+                                            <%- include ("../../views/_headerleader") %>
+                                                <%}%>
+                                                <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:5px">
+                                                    <div class="w3-row-padding w3-padding-16 w3-center">                                  
+                                                        <div class="w3-rest  w3-container">
+                                <center>
+                                    <h1>ใบสรุปชดเชยวันล่วงเวลาทำงาน</h1>  <br>
+                                    <%if(session.adminid){%>
+                                        <h5> ชื่อ: <font  id="f1"> <%=session.admin%>  </font> </h5>                                   
+                                        <%}else if(session.managerid){%>
+                                            <h5> ชื่อ: <font  id="f1"> <%=session.manager%>  </font> แผนก: <font  id="f1"> <%=session.leaderinstammandmasubdepartment%> </font> ตำแหน่ง: <font  id="f1">  <%=session.managerposition%> </font></h5>                                   
+                                            <%}else if (session.leaderinstammandma){%>
+                                                <h5> ชื่อ: <font  id="f1"> <%=session.leaderinstammandma%>  </font> แผนก: <font  id="f1"> <%=session.leaderinstammandmasubdepartment%> </font> ตำแหน่ง: <font  id="f1"><%=session.leaderinstammandmaposition%>  </font></h5>
+                                                <%}else if (session.leaderinstallid){%>
+                                                    <h5> ชื่อ: <font  id="f1"> <%=session.leaderinstall%>  </font> แผนก: <font  id="f1"> <%=session.leaderinstallsubdepartment%> </font> ตำแหน่ง: <font  id="f1"> <%=session.leaderinstallposition%> </font></h5>
+                                                    <%}else if (session.leadermaid){%>
+                                                        <h5> ชื่อ: <font  id="f1"> <%=session.leaderma%>  </font> แผนก: <font  id="f1"> <%=session.leadermasubdepartment%> </font> ตำแหน่ง: <font  id="f1"> <%=session.leadermaposition%> </font></h5>
+                                                        <%}else if (session.leaderid){%>
+                                                            <h5> ชื่อ: <font  id="f1"> <%=session.leader%>  </font> แผนก: <font  id="f1"> <%=session.leadersubdepartment%> </font> ตำแหน่ง: <font  id="f1"> <%=session.leaderposition%> </font></h5>
+                                                            <%}else if (session.hrid){%>
+                                                                <h5> ชื่อ: <font  id="f1"> <%=session.hr%>  </font> แผนก: <font  id="f1"> <%=session.hrsubdepartment%> </font> ตำแหน่ง: <font  id="f1"> <%=session.hrposition%> </font></h5>
+                                                                <%}else if (session.employeeid){%>
+                                                                    <h5> ชื่อ: <font  id="f1"> <%=session.employee%>  </font> แผนก: <font  id="f1"> <%=session.employeesubdepartment%> </font> ตำแหน่ง: <font  id="f1"> <%=session.employeeposition%> </font></h5>
+                                                                    <% }%>
+                                    <br>
+                                </center>
+                                <div style="overflow-x:auto;" align="center">
+                                <table class="table table-bordered table-hover">
+                                    <thead align="center">
+                                        <tr class="table-active">
+                                            <th>ลำดับ</th>
+                                            <th>ชื่อ-นามสกุล</th>
+                                            <th>ตำแหน่ง</th>
+                                            <th>แผนก</th>
+                                            <th>ตัวเลือก</th>
+                                        </tr>
+
+                                    </thead>
+
+                                    <tbody align="center">
+                                        <% if(data){ %>
+                                            <% for(var i=0 ; i < data.length;i++){ %>
+                                                <%if(data[i].statusot == 2 ){%>
+                                                <tr>
+                                                    <td>
+                                                        <%= (i+1) %>
+                                                    </td>
+                                                    <td>
+                                                        <%= data[i].sex %>
+                                                            <%= data[i].firstname %>
+                                                                <%= data[i].lastname %>
+                                                    </td>
+                                                    <td>
+                                                        <%=data[i].position%>
+                                                    </td>
+                                                    <td>
+                                                        <%=data[i].subdepartment%>
+                                                    </td>
+                                         
+                                                </tr>
+                                                <% } %>
+                                                <% } %>
+                                                <% } %>
+                                              
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<br><br>
+
+    <style>
+               th {
+            color: #5a5a5a;
+        }
+
+        td {
+            color: #5a5a5a;
+        }
+        #f1{
+            font-weight: normal;
+        }
+    </style>
+    <script>
+
+        function calCulator(){
+            var test = document.getElementById("test")
+            var a  = test.innerHTML.split(/[\n ]+/);
+            var test2 = document.getElementById("test2")
+            var b  = test2.innerHTML.split(/[\n ]+/);
+            var test3 = document.getElementById("test3")
+            var c  = test3.innerHTML.split(/[\n ]+/);
+            var d = a[6] - b[1]
+        }
+        </script>
+ 
+
+    <%- include ("../../views/_footer") %>
